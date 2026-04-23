@@ -218,8 +218,7 @@ run() {
             fi
 
             hostname=$(echo "$records" | hjq -r ".[$i].hostname")
-            regex="(^|,)$hostname(,|$)"
-            if [[ ! "$RECORDS" =~ $regex ]]; then
+            if [[ ",$RECORDS," != *",$hostname,"* ]]; then
                 log i "$normal$hostname$blue not in RECORDS"
                 continue
             fi
